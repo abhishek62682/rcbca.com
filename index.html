@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R C B & CO - Chartered Accountants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#F5F8FF',
+                            100: '#E1E9FE',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            900: '#1E3A8A',
+                        },
+                        surface: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            900: '#111827',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 40px -10px rgba(59, 130, 246, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 bg-brand-600 rounded-[8px] flex items-center justify-center text-white font-bold text-xl shadow-glow">
+                        R
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-surface-900">R C B & CO</span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-600 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="text-gray-600 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About Us</a>
+                        <a href="#services" class="text-gray-600 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+                        <a href="#team" class="text-gray-600 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Team</a>
+                        <a href="#resources" class="text-gray-600 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Resources</a>
+                        <a href="#contact" class="text-gray-600 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Client Portal</a>
+                    <a href="#contact" class="bg-surface-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Consultation</a>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden bg-brand-50">
+        <!-- Subtle geometric background pattern -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 32px 32px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-gray-200 shadow-sm text-xs font-semibold text-surface-900 uppercase tracking-widest">
+                    <i class="fa-solid fa-medal text-brand-500"></i> Chartered Accountants & Advisors
+                </div>
+                
+                <h1 class="text-5xl lg:text-[72px] font-bold tracking-tight text-surface-900 leading-[1.05]">
+                    Your Trusted Partner in <br/><span class="text-brand-600">Financial Excellence</span>
+                </h1>
+                
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Comprehensive audit, taxation, and advisory services tailored for modern enterprises. We transform complex financial data into strategic growth opportunities.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+                    <a href="#contact" class="inline-flex justify-center items-center bg-brand-600 text-white px-8 py-3.5 rounded-md text-base font-medium hover:bg-brand-700 transition-colors shadow-sm">
+                        Schedule Consultation
+                    </a>
+                    <a href="#services" class="inline-flex justify-center items-center bg-white text-surface-900 border border-gray-200 px-8 py-3.5 rounded-md text-base font-medium hover:bg-gray-50 transition-colors shadow-sm">
+                        Explore Services
+                    </a>
+                </div>
+                <p class="text-sm text-gray-400 mt-4">No long-term contract. Expert consultation guaranteed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section id="trust" class="py-12 border-y border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <div class="h-px bg-gray-200 flex-grow max-w-[40px]"></div>
+                <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest">They Trust Us</p>
+                <div class="h-px bg-gray-200 flex-grow max-w-[40px]"></div>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-20 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2 text-xl font-bold text-surface-900"><i class="fa-brands fa-stripe text-3xl"></i> FinTech Co</div>
+                <div class="flex items-center gap-2 text-xl font-bold text-surface-900"><i class="fa-brands fa-aws text-3xl"></i> CloudSys</div>
+                <div class="flex items-center gap-2 text-xl font-bold text-surface-900"><i class="fa-solid fa-building-columns text-2xl"></i> GlobalBank</div>
+                <div class="flex items-center gap-2 text-xl font-bold text-surface-900"><i class="fa-solid fa-shop text-2xl"></i> RetailPro</div>
+                <div class="flex items-center gap-2 text-xl font-bold text-surface-900"><i class="fa-brands fa-google text-2xl"></i> TechCorp</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Clean & Professional) -->
+    <section id="about" class="py-24 lg:py-32 bg-white border-t border-gray-100 relative">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 border border-brand-100 text-xs font-semibold text-brand-600 uppercase tracking-widest mb-6">
+                About Us
+            </div>
+            
+            <h2 class="text-4xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-16 leading-tight">
+                Your Trusted Partner in Financial Excellence
+            </h2>
+            
+            <div class="space-y-16 text-left">
+                <!-- Company Overview -->
+                <div class="border-b border-gray-100 pb-12">
+                    <h3 class="text-2xl font-bold text-surface-900 mb-6 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+                            <i class="fa-solid fa-building text-sm"></i>
+                        </div>
+                        Company Overview
+                    </h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        At RCB & CO, we are dedicated to providing comprehensive Chartered Accountancy services tailored to meet the diverse needs of businesses and individuals. With a foundation built on integrity, expertise, and client-centric values, our firm has been helping clients navigate the complexities of finance, taxation, and compliance with confidence and clarity.
+                    </p>
+                </div>
+
+                <!-- Who We Are -->
+                <div class="border-b border-gray-100 pb-12">
+                     <h3 class="text-2xl font-bold text-surface-900 mb-6 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+                            <i class="fa-solid fa-users text-sm"></i>
+                        </div>
+                        Who We Are
+                    </h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Founded by experienced Chartered Accountants, RCB & CO combines technical proficiency with a deep understanding of industry dynamics. Our team is committed to delivering precise, timely, and innovative financial solutions that empower our clients to achieve their strategic and operational goals.
+                    </p>
+                </div>
+
+                <!-- Our Approach -->
+                <div>
+                     <h3 class="text-2xl font-bold text-surface-900 mb-6 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+                            <i class="fa-solid fa-bullseye text-sm"></i>
+                        </div>
+                        Our Approach
+                    </h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        We believe that every client is unique, and so are their financial challenges and aspirations. That's why we adopt a personalized approach, taking the time to understand your specific requirements and crafting solutions that add tangible value. From tax planning and audit to advisory and compliance, our services are designed to provide you with peace of mind and strategic advantage.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Values Section -->
+    <section id="vision-values" class="py-24 lg:py-32 bg-surface-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-semibold text-surface-900 uppercase tracking-widest mb-6 shadow-sm">
+                    Vision & Values
+                </div>
+                <h2 class="text-3xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-6 leading-tight">
+                    To be a trusted and innovative partner in financial excellence
+                </h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    Empowering businesses and individuals with precise, ethical, and insightful accounting, taxation, and advisory services.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    We strive to foster long-term relationships by delivering value-driven solutions that enable sustainable growth, compliance, and confident decision-making in an ever-evolving economic landscape.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-[20px] border border-gray-100 shadow-soft hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Integrity</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We conduct our work with unwavering honesty, transparency, and ethical responsibility.
+                    </p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-[20px] border border-gray-100 shadow-soft hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Excellence</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We strive for precision and quality in all our services, ensuring timely and reliable financial solutions.
+                    </p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-[20px] border border-gray-100 shadow-soft hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Client Focus</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We place the interests of our clients at the forefront, delivering personalized services that address their specific goals and challenges.
+                    </p>
+                </div>
+                
+                <!-- Value 4 -->
+                <div class="bg-white p-8 rounded-[20px] border border-gray-100 shadow-soft hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Innovation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We continually adopt new knowledge and technologies to enhance the effectiveness and relevance of our advisory.
+                    </p>
+                </div>
+                
+                <!-- Value 5 -->
+                <div class="bg-white p-8 rounded-[20px] border border-gray-100 shadow-soft hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Collaboration</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We believe in fostering open dialogue and partnership, building strong relationships based on trust and mutual respect.
+                    </p>
+                </div>
+                
+                <!-- Value 6 -->
+                <div class="bg-white p-8 rounded-[20px] border border-gray-100 shadow-soft hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-xl mb-6">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Confidentiality</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We are deeply committed to safeguarding the privacy and confidentiality of our clients' information.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 lg:py-32 bg-surface-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-3 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-semibold text-surface-900 uppercase tracking-widest mb-6">
+                    Practice Areas
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-4">Comprehensive solutions for complex needs</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">From registration to auditing, we manage all aspects of your financial compliance so you can spend your time growing your business.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Registration & Incorporation</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">Complete entity setup and regulatory registrations for smooth business operations.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Company (OPC, Sec-8, Pvt/Pub)</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> LLP & Partnership Firm</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> NGO, Trust & Society</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> GST, MSME, IEC Registrations</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Income Tax</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">Strategic tax planning, filing, and representation before tax authorities.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Income Tax Returns</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Tax Assessments</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Tax Consultancy</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> TDS & Refunds Management</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Auditing & Assurance</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">Rigorous financial scrutiny to ensure transparency, compliance, and control.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Statutory Audit</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Tax Audit</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Internal Audit</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Concurrent & Other Audits</li>
+                    </ul>
+                </div>
+
+                 <!-- Service Card 4 -->
+                 <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Advisory</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">Expert guidance to navigate complex financial decisions and drive growth.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Financial Consulting</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Business Consulting</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Business Strategy</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Deal Advisory</li>
+                    </ul>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">International Taxation</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">Navigating cross-border tax complexities and transfer pricing regulations.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Expatriate Taxation</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Transfer Pricing</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> International Assessments</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Cross-border Consultancy</li>
+                    </ul>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Company & Corporate Laws</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">Ensuring strict adherence to statutory corporate compliances and filings.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Annual Filing</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Board Minutes Maintenance</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Statutory Compliances</li>
+                        <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> ROC Matters</li>
+                    </ul>
+                </div>
+
+                 <!-- Service Card 7 -->
+                 <div class="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-3 lg:w-2/3 mx-auto">
+                    <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600 text-lg mb-6">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-surface-900 mb-3">Goods & Services Tax (GST)</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed">End-to-end GST compliance, from preparation to filing and refunds.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Returns Preparation</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> Filing of Returns</li>
+                        </ul>
+                         <ul class="space-y-3">
+                            <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> GST Refunds</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-500"><i class="fa-solid fa-check text-brand-500 mt-0.5"></i> General GST Compliances</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Resources Section -->
+    <section id="resources" class="py-24 lg:py-32 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-3 py-1 rounded-md bg-brand-50 border border-brand-100 text-xs font-semibold text-brand-600 uppercase tracking-widest mb-6">
+                    Industry Resources
+                </div>
+                <h2 class="text-3xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-4">Regulatory Authorities</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Direct access to essential regulatory portals and compliance frameworks.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Resource Card 1 -->
+                <a href="#" class="group bg-surface-50 rounded-[8px] p-6 border border-gray-100 shadow-soft hover:shadow-md transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-[8px] flex items-center justify-center text-brand-600 shadow-sm border border-gray-100 group-hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-building-columns text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-surface-900 group-hover:text-brand-600 transition-colors">ICAI</h4>
+                        <p class="text-sm text-gray-500">Institute of Chartered Accountants</p>
+                    </div>
+                </a>
+                
+                <!-- Resource Card 2 -->
+                <a href="#" class="group bg-surface-50 rounded-[8px] p-6 border border-gray-100 shadow-soft hover:shadow-md transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-[8px] flex items-center justify-center text-brand-600 shadow-sm border border-gray-100 group-hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-scale-balanced text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-surface-900 group-hover:text-brand-600 transition-colors">CBIC</h4>
+                        <p class="text-sm text-gray-500">Central Board of Indirect Taxes</p>
+                    </div>
+                </a>
+                
+                <!-- Resource Card 3 -->
+                <a href="#" class="group bg-surface-50 rounded-[8px] p-6 border border-gray-100 shadow-soft hover:shadow-md transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-[8px] flex items-center justify-center text-brand-600 shadow-sm border border-gray-100 group-hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-landmark text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-surface-900 group-hover:text-brand-600 transition-colors">MCA</h4>
+                        <p class="text-sm text-gray-500">Ministry of Corporate Affairs</p>
+                    </div>
+                </a>
+                
+                <!-- Resource Card 4 -->
+                <a href="#" class="group bg-surface-50 rounded-[8px] p-6 border border-gray-100 shadow-soft hover:shadow-md transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-[8px] flex items-center justify-center text-brand-600 shadow-sm border border-gray-100 group-hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-file-invoice text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-surface-900 group-hover:text-brand-600 transition-colors">GST Portal</h4>
+                        <p class="text-sm text-gray-500">Goods and Services Tax</p>
+                    </div>
+                </a>
+                
+                <!-- Resource Card 5 -->
+                <a href="#" class="group bg-surface-50 rounded-[8px] p-6 border border-gray-100 shadow-soft hover:shadow-md transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-[8px] flex items-center justify-center text-brand-600 shadow-sm border border-gray-100 group-hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-money-bill-wave text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-surface-900 group-hover:text-brand-600 transition-colors">Income Tax</h4>
+                        <p class="text-sm text-gray-500">CBDT e-Filing Portal</p>
+                    </div>
+                </a>
+                
+                <!-- Resource Card 6 -->
+                <a href="#" class="group bg-surface-50 rounded-[8px] p-6 border border-gray-100 shadow-soft hover:shadow-md transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-[8px] flex items-center justify-center text-brand-600 shadow-sm border border-gray-100 group-hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-ship text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-surface-900 group-hover:text-brand-600 transition-colors">DGFT</h4>
+                        <p class="text-sm text-gray-500">Directorate General of Foreign Trade</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us (Features) -->
+    <section class="py-24 lg:py-32 bg-surface-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-6">The R C B Advantage</h2>
+                <p class="text-lg text-gray-600">We combine deep industry knowledge with innovative technology to deliver unparalleled financial clarity.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                <div>
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-surface-900 text-xl mb-5 border border-gray-100">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-surface-900 mb-2">Partner-Led Approach</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Direct involvement of senior partners ensures you receive top-tier strategic advice on every engagement.</p>
+                </div>
+                
+                <div>
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-surface-900 text-xl mb-5 border border-gray-100">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-surface-900 mb-2">Tech-Enabled Audits</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Leveraging AI and data analytics to perform deeper, more accurate financial reviews with less disruption.</p>
+                </div>
+                
+                <div>
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-surface-900 text-xl mb-5 border border-gray-100">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-surface-900 mb-2">Global Reach</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Extensive network of international affiliates to support your cross-border operations and expansions.</p>
+                </div>
+                
+                <div>
+                    <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-surface-900 text-xl mb-5 border border-gray-100">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-surface-900 mb-2">Uncompromising Ethics</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Strict adherence to professional standards and independence, safeguarding your corporate reputation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 lg:py-32 bg-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-3xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-6">Our structured approach</h2>
+                <p class="text-lg text-gray-600 max-w-2xl">A proven methodology that ensures precision, compliance, and strategic value at every stage of our engagement.</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Connecting Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-100 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-[20px] shadow-soft border border-gray-100 relative">
+                        <div class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-6 shadow-md absolute -top-5 left-6">1</div>
+                        <h4 class="text-xl font-bold text-surface-900 mb-3 mt-2">Discovery</h4>
+                        <p class="text-sm text-gray-600">In-depth analysis of your business model, financial systems, and specific challenges.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-[20px] shadow-soft border border-gray-100 relative mt-8 md:mt-0">
+                        <div class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-6 shadow-md absolute -top-5 left-6">2</div>
+                        <h4 class="text-xl font-bold text-surface-900 mb-3 mt-2">Strategy</h4>
+                        <p class="text-sm text-gray-600">Developing a customized action plan aligned with regulatory requirements and business goals.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-[20px] shadow-soft border border-gray-100 relative mt-8 md:mt-0">
+                        <div class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-6 shadow-md absolute -top-5 left-6">3</div>
+                        <h4 class="text-xl font-bold text-surface-900 mb-3 mt-2">Execution</h4>
+                        <p class="text-sm text-gray-600">Rigorous implementation of audits, tax structuring, or advisory services with continuous communication.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-[20px] shadow-soft border border-gray-100 relative mt-8 md:mt-0">
+                        <div class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-6 shadow-md absolute -top-5 left-6">4</div>
+                        <h4 class="text-xl font-bold text-surface-900 mb-3 mt-2">Optimization</h4>
+                        <p class="text-sm text-gray-600">Delivering actionable insights and continuous monitoring to drive long-term financial health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Leadership Section -->
+    <section id="leadership" class="py-24 lg:py-32 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-6">Meet Our Leadership</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Decades of combined expertise guiding strategic financial decisions and shaping industry standards.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-surface-50 rounded-[8px] p-8 border border-gray-100 shadow-soft transition-all hover:shadow-md flex flex-col h-full">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-4 border-white shadow-sm mx-auto">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/13bdd42238-bd949ebd52aa3a2687b1.png" alt="Professional headshot of an older Indian male corporate leader, wearing a tailored suit, neutral background, high-end corporate photography style" />
+                    </div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-surface-900 mb-1">Ramesh C. Bansal</h3>
+                        <p class="text-brand-600 font-medium text-sm mb-2">Founding Partner</p>
+                        <p class="text-xs text-gray-500 font-medium tracking-wide uppercase">FCA, F.I.A.M., B.Com Hons</p>
+                    </div>
+                    <div class="mt-auto pt-6 border-t border-gray-200">
+                        <p class="text-gray-600 text-sm leading-relaxed text-center">
+                            With over <strong class="text-surface-900 font-semibold">55+ years of experience</strong>, Mr. Bansal founded the firm in 1962. He serves as the core mentor, providing visionary guidance and maintaining the highest ethical standards of the practice.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-surface-50 rounded-[8px] p-8 border border-gray-100 shadow-soft transition-all hover:shadow-md flex flex-col h-full">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-4 border-white shadow-sm mx-auto">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/67e1eb8b9c-9514d85c5f483b1a87c5.png" alt="Professional headshot of a middle-aged Indian male corporate executive, wearing a modern navy suit, neutral background, high-end corporate photography style" />
+                    </div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-surface-900 mb-1">Ashish Bansal</h3>
+                        <p class="text-brand-600 font-medium text-sm mb-2">Managing Partner</p>
+                        <p class="text-xs text-gray-500 font-medium tracking-wide uppercase">FCA, F.I.A.M., B.Com Hons</p>
+                    </div>
+                    <div class="mt-auto pt-6 border-t border-gray-200">
+                        <p class="text-gray-600 text-sm leading-relaxed text-center">
+                            Bringing <strong class="text-surface-900 font-semibold">25+ years of experience</strong> in comprehensive audit and strategic business planning. He drives the firm's modernization with a deep passion for technology-enabled financial solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-surface-50 rounded-[8px] p-8 border border-gray-100 shadow-soft transition-all hover:shadow-md flex flex-col h-full">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-6 border-4 border-white shadow-sm mx-auto">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/df8a5c75f5-a729a71fd0726be07697.png" alt="Professional headshot of a young Indian male corporate professional, wearing a sharp grey suit, neutral background, high-end corporate photography style" />
+                    </div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-surface-900 mb-1">Apoorv Bansal</h3>
+                        <p class="text-brand-600 font-medium text-sm mb-2">Partner</p>
+                        <p class="text-xs text-gray-500 font-medium tracking-wide uppercase">ACA, B.Com A&F</p>
+                    </div>
+                    <div class="mt-auto pt-6 border-t border-gray-200">
+                        <p class="text-gray-600 text-sm leading-relaxed text-center">
+                            Leveraging his distinguished background at <strong class="text-surface-900 font-semibold">B S R & Co. LLP (KPMG)</strong>, Apoorv specializes in complex Income Tax structuring, corporate compliance, and modern regulatory frameworks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 lg:py-32 border-t border-gray-100 overflow-hidden relative bg-surface-900 text-white">
+        <!-- Background Pattern (Reference Inspired) -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-900/40 via-surface-900 to-surface-900"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center px-3 py-1 rounded-md bg-white border border-gray-200 text-xs font-semibold text-surface-900 uppercase tracking-widest mb-6 shadow-sm">
+                    Client Success
+                </div>
+                <h2 class="text-4xl lg:text-6xl font-bold text-white tracking-tight mb-4 leading-tight">Trusted by Industry Leaders</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Hear what our long-standing partners have to say about our commitment to excellence.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-surface-900 rounded-[16px] p-8 border border-gray-800 transition-all duration-300 relative flex flex-col h-full">
+                    <p class="text-gray-300 text-lg leading-relaxed flex-grow mb-8 font-light">
+                        "R C B & CO's strategic approach to our corporate restructuring was invaluable. Their team's deep understanding of complex tax implications saved us significant resources while ensuring complete compliance."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-800 flex-shrink-0">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/49ce3eb1b9-8b453bf228af9161377b.png" alt="Professional headshot of an Indian male executive, neutral background" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Sanjay Gupta</h4>
+                            <p class="text-sm text-gray-400">CFO, FinTech Co</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-surface-900 rounded-[16px] p-8 border border-gray-800 transition-all duration-300 relative flex flex-col h-full">
+                     <p class="text-gray-300 text-lg leading-relaxed flex-grow mb-8 font-light">
+                        "We have partnered with R C B & CO for over a decade for our statutory audits. Their meticulous attention to detail and proactive advisory on changing regulations provides us with immense peace of mind."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-800 flex-shrink-0">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/49ce3eb1b9-f68090e25eeb9a69f50c.png" alt="Professional headshot of an Indian female executive, neutral background" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Meera Reddy</h4>
+                            <p class="text-sm text-gray-400">Director, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-surface-900 rounded-[16px] p-8 border border-gray-800 transition-all duration-300 relative flex flex-col h-full">
+                     <p class="text-gray-300 text-lg leading-relaxed flex-grow mb-8 font-light">
+                        "Navigating international taxation was a daunting task until we engaged R C B & CO. Their expatriate taxation and transfer pricing expertise streamlined our cross-border operations flawlessly."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 rounded-full overflow-hidden bg-gray-800 flex-shrink-0">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/df8a5c75f5-d3a9a465591164aa8f9e.png" alt="Professional headshot of a young Indian male executive, neutral background" />
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Arjun Patel</h4>
+                            <p class="text-sm text-gray-400">VP Finance, GlobalBank</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="flex justify-center items-center gap-2 mt-12">
+                <button class="w-8 h-2 rounded-full bg-brand-500 transition-all"></button>
+                <button class="w-2 h-2 rounded-full bg-gray-600 hover:bg-gray-500 transition-all"></button>
+                <button class="w-2 h-2 rounded-full bg-gray-600 hover:bg-gray-500 transition-all"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info & Map Placeholder -->
+                <div>
+                    <h2 class="text-3xl lg:text-5xl font-bold text-surface-900 tracking-tight mb-6">Get in touch</h2>
+                    <p class="text-lg text-gray-600 mb-12">Our team of partners is ready to discuss how we can support your business objectives.</p>
+                    
+                    <div class="space-y-8 mb-12">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-surface-50 rounded-full shadow-sm flex items-center justify-center text-brand-600 shrink-0 border border-gray-100">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-surface-900 mb-1">Corporate Headquarters</h4>
+                                <p class="text-gray-600">7 Sagar Apartments, 6 Tilak Marg<br>New Delhi - 110001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-surface-50 rounded-full shadow-sm flex items-center justify-center text-brand-600 shrink-0 border border-gray-100">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-surface-900 mb-1">Direct Line</h4>
+                                <p class="text-gray-600">+91 11 2338 1234</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-surface-50 rounded-full shadow-sm flex items-center justify-center text-brand-600 shrink-0 border border-gray-100">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-surface-900 mb-1">Email</h4>
+                                <p class="text-gray-600">ca@rcbca.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Placeholder -->
+                    <div class="w-full h-64 bg-gray-200 rounded-[20px] overflow-hidden relative border border-gray-300">
+                         <div class="absolute inset-0 flex items-center justify-center text-gray-400 flex-col gap-2">
+                             <i class="fa-solid fa-map-location-dot text-4xl"></i>
+                             <span class="font-medium text-sm">Interactive Map Integration</span>
+                         </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white p-8 lg:p-12 rounded-[24px] shadow-soft border border-gray-100">
+                    <h3 class="text-2xl font-bold text-surface-900 mb-6">Request a Callback</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-surface-50 focus:bg-white" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-surface-50 focus:bg-white" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-surface-50 focus:bg-white" placeholder="Acme Corp">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-surface-50 focus:bg-white" placeholder="john@company.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Service of Interest</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-surface-50 focus:bg-white text-gray-600">
+                                <option>Audit & Assurance</option>
+                                <option>Tax Advisory</option>
+                                <option>M&A Advisory</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-surface-50 focus:bg-white resize-none" placeholder="How can we help you?"></textarea>
+                        </div>
+                        
+                        <button type="button" class="w-full bg-surface-900 text-white py-4 rounded-xl font-medium hover:bg-gray-800 transition-colors shadow-md">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight CTA Section -->
+    <section class="py-24 bg-surface-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-900/40 via-surface-900 to-surface-900"></div>
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-4xl lg:text-6xl font-bold text-white tracking-tight mb-8">Ready to elevate your financial strategy?</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Join industry leaders who trust R C B & CO for premium audit, tax, and advisory services.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-brand-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-brand-500 transition-all shadow-glow hover:shadow-lg transform hover:-translate-y-0.5">
+                    Schedule a Consultation
+                </a>
+                <a href="#" class="bg-transparent text-white border border-gray-600 px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 transition-all">
+                    Download Firm Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-surface-900 border-t border-gray-800 pt-16 pb-8 text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-brand-600 rounded-[8px] flex items-center justify-center text-white font-bold text-xl">R</div>
+                        <span class="font-bold text-xl text-white">R C B & CO</span>
+                    </div>
+                    <p class="text-gray-400 max-w-sm mb-6">
+                        Premium chartered accounting and financial advisory services for modern businesses seeking growth and compliance.
+                    </p>
+                    <div class="flex flex-col gap-2 mb-6 text-sm text-gray-400">
+                         <p><i class="fa-solid fa-location-dot w-5 text-brand-500"></i> 7 Sagar Apartments, 6 Tilak Marg, New Delhi - 110001</p>
+                         <p><i class="fa-solid fa-envelope w-5 text-brand-500"></i> ca@rcbca.com</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-6">Services</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Audit & Assurance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Tax Advisory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Corporate Finance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Risk Management</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-6">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Our Team</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">© 2026 R C B & CO. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart Initialization
+        function initializeCharts() {
+            try {
+                // Hero Chart (Spline Area)
+                const heroChartData = [{
+                    x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    y: [120, 150, 140, 180, 220, 260],
+                    type: 'scatter',
+                    mode: 'lines',
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(59, 130, 246, 0.1)',
+                    line: {
+                        color: '#3B82F6',
+                        width: 3,
+                        shape: 'spline',
+                        smoothing: 1.3
+                    },
+                    hoverinfo: 'y',
+                }];
+
+                const heroChartLayout = {
+                    margin: { t: 10, r: 10, b: 30, l: 30 },
+                    paper_bgcolor: 'transparent',
+                    plot_bgcolor: 'transparent',
+                    showlegend: false,
+                    xaxis: {
+                        showgrid: false,
+                        zeroline: false,
+                        tickfont: { color: '#9CA3AF', size: 12 }
+                    },
+                    yaxis: {
+                        showgrid: true,
+                        gridcolor: 'rgba(243, 244, 246, 1)',
+                        zeroline: false,
+                        tickfont: { color: '#9CA3AF', size: 12 }
+                    }
+                };
+
+                Plotly.newPlot('hero-chart', heroChartData, heroChartLayout, {displayModeBar: false, responsive: true});
+
+            } catch (error) {
+                console.error('Chart initialization failed:', error);
+            }
+        }
+
+        window.addEventListener('load', initializeCharts);
+        setTimeout(initializeCharts, 1000);
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
